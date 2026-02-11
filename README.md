@@ -1,84 +1,20 @@
-# HireEm – Job Portal
+<div align="center">
+<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
+</div>
 
-HireEm is a full-stack job portal platform designed to connect recruiters and job seekers through a clean, structured, and intelligent hiring experience. The system enables recruiters to post job listings and candidates to discover and apply for opportunities, with optional AI-assisted matching.
+# Run and deploy your AI Studio app
 
-The platform focuses on real authentication, database-backed persistence, and production-grade interaction flows.
+This contains everything you need to run your app locally.
 
-## Project Overview
-HireEm allows users to:
+View your app in AI Studio: https://ai.studio/apps/drive/1Lh_rswup16_F0vwu4XOiBSk-EpRGpqpI
 
-- Register and log in securely
+## Run Locally
 
-- Post and manage job listings (Recruiter role)
+**Prerequisites:**  Node.js
 
-- Browse available jobs (Public access)
 
-- Apply to job listings
-
-- View application status
-
-## Key Features
-- Role-based authentication (Recruiter / Job Seeker)
-
-- Job posting and management
-
-- Public job listing feed
-
-- Job detail page
-
-- Apply functionality with persistent status
-
-- Database-backed application tracking
-
-- Theme-aware UI
-
-## Tech Stack
-
-### Frontend
-
-- Next.js/ React
-
-- Tailwind CSS
-
-### Backend
-
-- Node.js
-
-- Express.js / API Routes
-
-### Database
-
-- PostgreSQL
-
-### Authentication
-- Session-based or JWT-based authentication
-
-- Password hashing using bcrypt
-
-### Optional AI Integration
-- Resume parsing
-
-- Job recommendation system
-
-- Skill gap analysis
-
-## Project Structure
-```
-scribra-ai-blog-platform/
-hireem/
- │
- ├── app/                 # Core routes and pages
- ├── components/          # Reusable UI components
- ├── api/                 # Backend routes
- ├── database/            # Schema and models
- ├── lib/                 # Utilities
- └── public/              # Static assets
-
-```
-
-### Run Locally
-Prerequisites: Node.js
-
-1. Install dependencies: npm install
-2. Set the GEMINI_API_KEY in .env.local to your Gemini API key
-3. Run the app: npm run dev
+1. Install dependencies:
+   `npm install`
+2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
+3. Run the app:
+   `npm run dev`
