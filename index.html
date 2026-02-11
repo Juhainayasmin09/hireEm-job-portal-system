@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HireEm - Job Portal</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+      :root {
+        /* Light Theme */
+        --color-bg: #F8FAFC;
+        --color-surface: #FFFFFF;
+        --color-primary: #1F3A5F;
+        --color-primary-hover: #162C46;
+        --color-accent: #4FA3D1;
+        --color-border: #E2E8F0;
+        --color-text-primary: #0F172A;
+        --color-text-secondary: #475569;
+        --color-text-muted: #94A3B8;
+        --color-input-bg: #FFFFFF;
+        --color-input-border: #CBD5E1;
+        --color-focus: #4FA3D1;
+
+        /* Button Tokens - Light */
+        --btn-primary-bg: #1F3A5F;
+        --btn-primary-text: #FFFFFF;
+        --btn-primary-hover: #162C46;
+        --btn-secondary-bg: #FFFFFF;
+        --btn-secondary-text: #0F172A;
+        /* Updated Accent Button for Light Theme: White bg, Dark text */
+        --btn-accent-bg: #FFFFFF;
+        --btn-accent-text: #0F172A;
+        --btn-border: #CBD5E1;
+      }
+
+      .dark {
+        /* Dark Theme */
+        --color-bg: #0F172A;
+        --color-surface: #1E293B;
+        --color-primary: #4FA3D1;
+        --color-primary-hover: #38BDF8;
+        --color-accent: #38BDF8;
+        --color-border: #1E293B;
+        --color-text-primary: #E5E7EB;
+        --color-text-secondary: #CBD5E1;
+        --color-text-muted: #94A3B8;
+        --color-input-bg: #020617;
+        --color-input-border: #334155;
+        --color-focus: #38BDF8;
+
+        /* Button Tokens - Dark */
+        --btn-primary-bg: #E5E7EB;
+        --btn-primary-text: #020617;
+        --btn-primary-hover: #CBD5E1;
+        --btn-secondary-bg: #020617;
+        --btn-secondary-text: #E5E7EB;
+        --btn-accent-bg: #38BDF8;
+        --btn-accent-text: #020617;
+        --btn-border: #334155;
+      }
+
+      body {
+        font-family: 'Inter', sans-serif;
+        background-color: var(--color-bg);
+        color: var(--color-text-primary);
+        transition: background-color 0.2s ease, color 0.2s ease;
+      }
+      
+      @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(10px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+      .animate-fade-in {
+        animation: fadeIn 0.5s ease-out forwards;
+      }
+      .delay-100 { animation-delay: 100ms; }
+      .delay-200 { animation-delay: 200ms; }
+      .delay-300 { animation-delay: 300ms; }
+      
+      /* Glassmorphism for overlays */
+      .glass {
+        background: rgba(255, 255, 255, 0.7);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+      }
+      .dark .glass {
+        background: rgba(15, 23, 42, 0.7);
+      }
+    </style>
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            colors: {
+              bg: 'var(--color-bg)',
+              surface: 'var(--color-surface)',
+              primary: 'var(--color-primary)',
+              'primary-hover': 'var(--color-primary-hover)',
+              accent: 'var(--color-accent)',
+              border: 'var(--color-border)',
+              'text-primary': 'var(--color-text-primary)',
+              'text-secondary': 'var(--color-text-secondary)',
+              'text-muted': 'var(--color-text-muted)',
+              'input-bg': 'var(--color-input-bg)',
+              'input-border': 'var(--color-input-border)',
+              focus: 'var(--color-focus)',
+              
+              /* Button Colors */
+              'btn-primary-bg': 'var(--btn-primary-bg)',
+              'btn-primary-text': 'var(--btn-primary-text)',
+              'btn-primary-hover': 'var(--btn-primary-hover)',
+              'btn-secondary-bg': 'var(--btn-secondary-bg)',
+              'btn-secondary-text': 'var(--btn-secondary-text)',
+              'btn-accent-bg': 'var(--btn-accent-bg)',
+              'btn-accent-text': 'var(--btn-accent-text)',
+              'btn-border': 'var(--btn-border)',
+            }
+          }
+        }
+      }
+    </script>
+  <script type="importmap">
+{
+  "imports": {
+    "react-dom/": "https://esm.sh/react-dom@^19.2.4/",
+    "react/": "https://esm.sh/react@^19.2.4/",
+    "react": "https://esm.sh/react@^19.2.4",
+    "@google/genai": "https://esm.sh/@google/genai@^1.40.0"
+  }
+}
+</script>
+</head>
+  <body class="antialiased selection:bg-accent selection:text-white">
+    <div id="root"></div>
+  </body>
+</html>
