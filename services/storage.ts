@@ -114,6 +114,11 @@ export const storage = {
     return stored ? JSON.parse(stored) : null;
   },
 
+  getUser: (email: string): UserProfile | undefined => {
+    const users = JSON.parse(localStorage.getItem(USERS_KEY) || '[]');
+    return users.find((u: any) => u.email === email);
+  },
+
   updateProfile: (profile: UserProfile) => {
     localStorage.setItem(CURRENT_USER_KEY, JSON.stringify(profile));
     // Also update in the main users array
@@ -130,6 +135,12 @@ export const storage = {
   getApplications: (): Application[] => {
     const stored = localStorage.getItem(APPLICATIONS_KEY);
     return stored ? JSON.parse(stored) : [];
+  },
+
+  getApplicationsForJob: (jobId: string): Application[] => {
+    const stored = localStorage.getItem(APPLICATIONS_KEY);
+    const apps: Application[] = stored ? JSON.parse(stored) : [];
+    return apps.filter(a => a.jobId === jobId);
   },
 
   applyToJob: (userId: string, jobId: string): Application => {
