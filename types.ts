@@ -56,4 +56,5 @@ export interface ResumeAnalysisResult {
   missingSkills: string[];
   matchingKeywords: string[]; // New field for explicit matches
   improvementTips: string[];
+  interviewQuestions: string[]; // New field for interview preparation
 }

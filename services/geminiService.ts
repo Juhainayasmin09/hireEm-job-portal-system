@@ -177,6 +177,7 @@ export const analyzeResumeMatch = async (profile: UserProfile, job: Job): Promis
         List "Matching Keywords" (exact skills from the job description that the candidate has).
         List missing skills or gaps (keywords found in job but not in profile).
         Provide actionable tips to improve the resume for this specific job.
+        Provide 3 likely interview questions based on the job and candidate's gaps or strengths.
       `,
       config: {
         responseMimeType: "application/json",
@@ -188,9 +189,10 @@ export const analyzeResumeMatch = async (profile: UserProfile, job: Job): Promis
              strengths: { type: Type.ARRAY, items: { type: Type.STRING } },
              matchingKeywords: { type: Type.ARRAY, items: { type: Type.STRING } },
              missingSkills: { type: Type.ARRAY, items: { type: Type.STRING } },
-             improvementTips: { type: Type.ARRAY, items: { type: Type.STRING } }
+             improvementTips: { type: Type.ARRAY, items: { type: Type.STRING } },
+             interviewQuestions: { type: Type.ARRAY, items: { type: Type.STRING } }
           },
-          required: ["matchScore", "matchLevel", "strengths", "matchingKeywords", "missingSkills", "improvementTips"]
+          required: ["matchScore", "matchLevel", "strengths", "matchingKeywords", "missingSkills", "improvementTips", "interviewQuestions"]
         }
       }
     });

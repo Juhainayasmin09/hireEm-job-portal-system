@@ -61,6 +61,18 @@ export const JobDetail: React.FC<JobDetailProps> = ({ job, currentUser, onBack }
         return;
     }
 
+    // Validation: Check if profile has enough data
+    const hasSkills = currentUser.skills && currentUser.skills.length > 0;
+    const hasExperience = currentUser.experience && currentUser.experience.trim().length > 0;
+    
+    if (!hasSkills && !hasExperience) {
+        setToast({ 
+          message: 'Please complete your profile (skills or experience) to get an accurate analysis.', 
+          type: 'error' 
+        });
+        return;
+    }
+
     setIsAnalyzing(true);
     const result = await analyzeResumeMatch(currentUser, job);
     if (result) {
@@ -351,19 +363,39 @@ export const JobDetail: React.FC<JobDetailProps> = ({ job, currentUser, onBack }
                                 )}
                             </div>
 
-                            <div className="bg-surface p-5 rounded-xl border border-border h-full">
-                                <h4 className="text-base font-bold text-accent mb-4 flex items-center gap-2">
-                                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
-                                    Improvement Tips
-                                </h4>
-                                <ul className="space-y-4">
-                                    {analysis.improvementTips.map((s, i) => (
-                                        <li key={i} className="flex gap-3 text-sm text-text-secondary">
-                                            <span className="flex-shrink-0 w-6 h-6 rounded-full bg-accent/10 text-accent flex items-center justify-center font-bold text-xs">{i + 1}</span>
-                                            {s}
-                                        </li>
-                                    ))}
-                                </ul>
+                            <div className="space-y-6">
+                                <div className="bg-surface p-5 rounded-xl border border-border">
+                                    <h4 className="text-base font-bold text-accent mb-4 flex items-center gap-2">
+                                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                                        Improvement Tips
+                                    </h4>
+                                    <ul className="space-y-4">
+                                        {analysis.improvementTips.map((s, i) => (
+                                            <li key={i} className="flex gap-3 text-sm text-text-secondary">
+                                                <span className="flex-shrink-0 w-6 h-6 rounded-full bg-accent/10 text-accent flex items-center justify-center font-bold text-xs">{i + 1}</span>
+                                                {s}
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </div>
+
+                                {/* Interview Questions Section */}
+                                {analysis.interviewQuestions && analysis.interviewQuestions.length > 0 && (
+                                    <div className="bg-purple-50 dark:bg-purple-900/10 p-5 rounded-xl border border-purple-100 dark:border-purple-900/30">
+                                        <h4 className="text-base font-bold text-purple-700 dark:text-purple-400 mb-3 flex items-center gap-2">
+                                            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"></path></svg>
+                                            Potential Interview Questions
+                                        </h4>
+                                        <ul className="space-y-3">
+                                            {analysis.interviewQuestions.map((q, i) => (
+                                                <li key={i} className="flex gap-2 text-sm text-text-primary italic">
+                                                     <span className="text-purple-500 font-bold">Q:</span>
+                                                     {q}
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    </div>
+                                )}
                             </div>
                         </div>
                     </div>
