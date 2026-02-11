@@ -174,6 +174,7 @@ export const analyzeResumeMatch = async (profile: UserProfile, job: Job): Promis
         Analyze how well the candidate's profile matches the job description.
         Provide a match score (0-100), match level (High, Medium, Low).
         List key strengths (why they fit).
+        List "Matching Keywords" (exact skills from the job description that the candidate has).
         List missing skills or gaps (keywords found in job but not in profile).
         Provide actionable tips to improve the resume for this specific job.
       `,
@@ -185,10 +186,11 @@ export const analyzeResumeMatch = async (profile: UserProfile, job: Job): Promis
              matchScore: { type: Type.NUMBER },
              matchLevel: { type: Type.STRING, enum: ["High", "Medium", "Low"] },
              strengths: { type: Type.ARRAY, items: { type: Type.STRING } },
+             matchingKeywords: { type: Type.ARRAY, items: { type: Type.STRING } },
              missingSkills: { type: Type.ARRAY, items: { type: Type.STRING } },
              improvementTips: { type: Type.ARRAY, items: { type: Type.STRING } }
           },
-          required: ["matchScore", "matchLevel", "strengths", "missingSkills", "improvementTips"]
+          required: ["matchScore", "matchLevel", "strengths", "matchingKeywords", "missingSkills", "improvementTips"]
         }
       }
     });

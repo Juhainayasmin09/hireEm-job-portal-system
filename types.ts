@@ -54,5 +54,6 @@ export interface ResumeAnalysisResult {
   matchLevel: 'High' | 'Medium' | 'Low';
   strengths: string[];
   missingSkills: string[];
+  matchingKeywords: string[]; // New field for explicit matches
   improvementTips: string[];
 }
